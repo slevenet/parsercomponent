@@ -21,7 +21,7 @@ public class VolatParser {
               .map(el -> el.getAllElements())
               .collect(Collectors.toMap(
                      k-> k.get(1).getAllElements().text(),
-                     k->k.get(3).getAllElements().text())
+                     k->k.get(3).getAllElements().text().replace(",","."))
               );
     }
 }

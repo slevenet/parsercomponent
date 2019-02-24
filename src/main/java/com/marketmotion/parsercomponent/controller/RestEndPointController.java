@@ -2,6 +2,7 @@ package com.marketmotion.parsercomponent.controller;
 
 import com.marketmotion.parsercomponent.parser.VolatParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,8 @@ public class RestEndPointController {
     @Autowired
     VolatParser volatParser;
 
-    @GetMapping("volatTable")
+    @GetMapping("volattable")
+    @Cacheable(cacheNames="Volattable")
     public Map<String,String> getVolatTable() throws IOException {
         return volatParser.parse();
     }
